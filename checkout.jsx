@@ -116,6 +116,17 @@ function CheckoutApp() {
               </div>
 
               <div className="form-card">
+                <h2><span className="step-dot"><Icon name="package-check" size={15} /></span>Как вы получите заказ</h2>
+                <p className="fc-sub">Услуга цифровая — получение проходит онлайн, без физической доставки.</p>
+                <ul className="delivery-list">
+                  <li><Icon name="zap" size={16} /><span>После оплаты заявка сразу поступает в работу — мы оформляем доступ или пополнение.</span></li>
+                  <li><Icon name="user-check" size={16} /><span>Результат — активация на ваш аккаунт, зачисление баланса или выдача кода с инструкцией.</span></li>
+                  <li><Icon name="mail" size={16} /><span>Уведомление и детали приходят на указанный в заявке email и в поддержку в Telegram.</span></li>
+                  <li><Icon name="clock" size={16} /><span>Срок указан в карточке услуги (обычно от 15 минут) и отсчитывается с момента подтверждения оплаты.</span></li>
+                </ul>
+              </div>
+
+              <div className="form-card">
                 <h2><span className="step-dot">2</span>Согласия</h2>
                 <p className="fc-sub">Перед созданием заявки подтвердите согласие с документами.</p>
                 <div className="consents">
