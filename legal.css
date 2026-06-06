@@ -1,0 +1,308 @@
+/* ============================================================
+   DedPay — legal pages (offer / privacy / refund / contacts)
+   Reuses tokens & primitives from styles.css
+   ============================================================ */
+
+/* ---------- Legal header ---------- */
+.lheader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background .3s, border-color .3s;
+  border-bottom: 1px solid transparent;
+}
+.lheader.scrolled {
+  background: color-mix(in oklab, var(--bg-0) 72%, transparent);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom-color: var(--line);
+}
+.lheader-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  transition: height .3s;
+}
+.lheader.scrolled .lheader-inner { height: 64px; }
+
+/* ---------- Document hero ---------- */
+.doc-hero {
+  padding-top: clamp(40px, 6vw, 72px);
+  padding-bottom: clamp(28px, 4vw, 44px);
+  border-bottom: 1px solid var(--line);
+}
+.doc-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+  transition: color .2s, gap .2s;
+  margin-bottom: 26px;
+}
+.doc-back:hover { color: var(--acc); gap: 12px; }
+.doc-back svg { width: 16px; height: 16px; }
+
+.doc-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 4.6vw, 46px);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  margin: 0;
+  text-wrap: balance;
+}
+.doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 20px;
+}
+.doc-meta .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-2);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 7px 14px;
+}
+.doc-meta .chip svg { width: 14px; height: 14px; color: var(--acc); }
+.doc-meta .chip a { color: var(--text-2); }
+.doc-meta .chip a:hover { color: var(--acc); }
+
+/* ---------- Document layout ---------- */
+.doc-wrap {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  padding-block: clamp(40px, 6vw, 72px);
+  align-items: start;
+}
+
+/* sticky TOC */
+.doc-toc {
+  position: sticky;
+  top: 96px;
+  font-size: 14px;
+}
+.doc-toc h6 {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin: 0 0 14px;
+}
+.doc-toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+.doc-toc li { counter-increment: toc; }
+.doc-toc a {
+  display: flex;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: var(--text-3);
+  line-height: 1.4;
+  font-size: 13.5px;
+  transition: color .2s, background .2s;
+}
+.doc-toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--font-mono);
+  color: var(--text-faint);
+  font-size: 11.5px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+.doc-toc a:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.doc-toc a.active { color: var(--acc); }
+.doc-toc a.active::before { color: var(--acc); }
+
+/* document body */
+.doc-body { max-width: 760px; }
+.doc-single {
+  margin-inline: auto;
+  padding-block: clamp(40px, 6vw, 72px);
+}
+.doc-intro {
+  color: var(--text-2);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.doc-section { padding-top: 14px; margin-bottom: 38px; scroll-margin-top: 96px; }
+.doc-section > h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.4vw, 25px);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+.doc-section > h2 .n {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--acc);
+  flex-shrink: 0;
+}
+.doc-section h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--text);
+  margin: 26px 0 10px;
+}
+.doc-section p {
+  color: var(--text-2);
+  font-size: 15.5px;
+  line-height: 1.72;
+  margin: 0 0 14px;
+}
+.doc-section ul, .doc-section ol.list {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.doc-section ul li, .doc-section ol.list li {
+  position: relative;
+  padding-left: 26px;
+  color: var(--text-2);
+  font-size: 15.5px;
+  line-height: 1.68;
+}
+.doc-section ul li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  width: 6px; height: 6px;
+  border-radius: 2px;
+  background: var(--acc);
+  transform: rotate(45deg);
+}
+.doc-section ol.list { counter-reset: dl; }
+.doc-section ol.list li { counter-increment: dl; }
+.doc-section ol.list li::before {
+  content: counter(dl);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--acc);
+}
+.doc-section a.inline { color: var(--acc); border-bottom: 1px solid var(--acc-line); }
+.doc-section a.inline:hover { border-bottom-color: var(--acc); }
+.doc-section strong { color: var(--text); font-weight: 600; }
+
+/* highlighted callout card (disclaimers, requisites) */
+.doc-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(20px, 3vw, 30px);
+  margin: 18px 0 30px;
+  box-shadow: var(--shadow-card);
+}
+.doc-card.accent {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--acc) 8%, var(--surface)), var(--surface));
+  border-color: var(--acc-line);
+}
+.doc-card h3 { margin-top: 0; }
+.doc-card p:last-child { margin-bottom: 0; }
+
+/* requisites / definition list */
+.req-list { display: grid; grid-template-columns: 1fr; gap: 0; margin: 0; }
+.req-row {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+.req-row:last-child { border-bottom: none; }
+.req-row dt { color: var(--text-3); font-size: 13.5px; }
+.req-row dd { margin: 0; color: var(--text); font-weight: 500; }
+.req-row dd a { color: var(--text); }
+.req-row dd a:hover { color: var(--acc); }
+
+/* definitions block (terms) */
+.terms { display: flex; flex-direction: column; gap: 16px; }
+.term { padding-left: 18px; border-left: 2px solid var(--acc-line); }
+.term dt { font-family: var(--font-display); font-weight: 600; color: var(--text); font-size: 15.5px; margin-bottom: 4px; }
+.term dd { margin: 0; color: var(--text-2); font-size: 15px; line-height: 1.66; }
+
+/* contact-specific */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 8px 0 30px;
+}
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.contact-card .ic {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  background: var(--acc-soft);
+  border: 1px solid var(--acc-line);
+  color: var(--acc);
+  margin-bottom: 10px;
+}
+.contact-card .ic svg { width: 20px; height: 20px; }
+.contact-card .lab {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.contact-card .val { font-size: 17px; font-weight: 600; color: var(--text); word-break: break-word; }
+.contact-card .val a { color: var(--text); transition: color .2s; }
+.contact-card .val a:hover { color: var(--acc); }
+.contact-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
+
+/* updated note */
+.doc-updated {
+  margin-top: 8px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .doc-wrap { grid-template-columns: 1fr; }
+  .doc-toc { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .req-row { grid-template-columns: 1fr; gap: 4px; }
+  .req-row dt { font-size: 12.5px; }
+}
+@media (max-width: 720px) {
+  .lheader-inner .btn-ghost { display: none; }
+}
