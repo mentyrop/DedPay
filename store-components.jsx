@@ -135,7 +135,6 @@ function StoreFooter() {
         <div className="footer-legal">
           <p className="small">© DedPay, 2026 · {f.legal.name} · ИНН {f.legal.inn}</p>
           {f.legal.address && <p className="small dim">{f.legal.address}</p>}
-          <p className="small dim">{f.legal.status}</p>
           <p className="small dim">
             <a href={"mailto:" + f.legal.email}>{f.legal.email}</a> · <a href={"tel:" + f.legal.phone.replace(/[^+\d]/g, "")}>{f.legal.phone}</a>
           </p>
