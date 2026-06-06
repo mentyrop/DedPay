@@ -36,6 +36,7 @@
           "</div>" +
           '<div class="footer-legal">' +
             '<p class="small">© DedPay, 2026 · ' + esc(legal.name) + " · ИНН " + esc(legal.inn) + "</p>" +
+            (legal.address ? '<p class="small dim">' + esc(legal.address) + "</p>" : "") +
             '<p class="small dim">' +
               '<a href="mailto:' + esc(legal.email) + '">' + esc(legal.email) + "</a>" +
               ' · <a href="' + telHref(legal.phone) + '">' + esc(legal.phone) + "</a></p>" +
